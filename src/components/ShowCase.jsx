@@ -14,14 +14,15 @@ const ShowCase = (props) => {
       <Grid container rowSpacing={5} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {ids.map((id) => {
           const product = entities[id];
+          const { visible } = product;
           return (
-            <Grid item key={id} xs={12} sm={6} md={3}>
+            visible ? < Grid item key={id} xs={12} sm={6} md={3} >
               {MediaCard({ product })}
-            </Grid>
-          )
+            </Grid> : null
+          );
         })}
       </Grid>
-    </Container>
+    </Container >
   );
 }
 

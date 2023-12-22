@@ -4,15 +4,18 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+import { Grid, IconButton } from '@mui/material';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Typography from '@mui/material/Typography';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useDispatch } from 'react-redux';
 
-import { addLike } from '../slices/cardsSlice';
+import { addLike, changeVision } from '../slices/cardsSlice';
 
 export default function MediaCard(props) {
-  const { img, id } = props.product;
+  const { img, id, isLike } = props.product;
 
   const dispatch = useDispatch();
 
@@ -33,8 +36,19 @@ export default function MediaCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={() => dispatch(addLike(id))} size="small">Share</Button>
+        <Grid container>
+          <Grid item xs={10} >
+            <IconButton onClick={() => dispatch(addLike(id))} aria-label="like">
+              {isLike ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            </IconButton>
+          </Grid>
+          <Grid item xs={2} >
+            <IconButton onClick={() => dispatch(changeVision(id))} aria-label="delete">
+              <DeleteIcon />
+            </IconButton>
+          </Grid>
+        </Grid>
       </CardActions>
-    </Card>
+    </Card >
   );
 }
