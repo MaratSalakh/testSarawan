@@ -28,7 +28,7 @@ export default function MediaCard(props) {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {id}
+          {`${id + 1} dog`}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {description}
