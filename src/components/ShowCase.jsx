@@ -8,16 +8,16 @@ import { Container, Grid, Box, Switch, FormControlLabel } from "@mui/material"
 import { fetchImg } from "../slices/cardsSlice";
 
 const ShowCase = (props) => {
-  const dispatch = useDispatch();
+  const [hideLikes, setHideLikes] = useState(false);
 
-  dispatch(fetchImg());
+  const dispatch = useDispatch();
 
   const { MediaCard } = props;
 
-  const [hideLikes, setHideLikes] = useState(false);
-
   const ids = useSelector((state) => state.cards.ids);
   const entities = useSelector((state) => state.cards.entities);
+
+  dispatch(fetchImg());
 
   return (
     <Container maxWidth="xl">

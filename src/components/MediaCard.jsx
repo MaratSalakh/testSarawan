@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux';
 import { addLike, changeVision } from '../slices/cardsSlice';
 
 export default function MediaCard(props) {
-  const { img, id, isLike, description } = props.product;
+  const { img, id, isLike, description, name } = props.product;
 
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ export default function MediaCard(props) {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {`${id + 1} dog`}
+          {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {description}

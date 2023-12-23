@@ -7,7 +7,10 @@ export const fetchImg = createAsyncThunk(
     const data = [];
     for (let i = 0; i < 10; i += 1) {
       const response = await axios.get('https://dog.ceo/api/breeds/image/random');
+      const splittedUrl = response.data.message.split('/');
+      const name = splittedUrl[splittedUrl.length - 2];
       data.push({
+        name: name,
         id: i,
         img: response.data.message,
         isLike: false,
