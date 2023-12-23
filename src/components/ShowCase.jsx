@@ -1,11 +1,17 @@
 /* eslint-disable react/prop-types */
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 
 import { Container, Grid, Box, Switch, FormControlLabel } from "@mui/material"
 
+import { fetchImg } from "../slices/cardsSlice";
+
 const ShowCase = (props) => {
+  const dispatch = useDispatch();
+
+  dispatch(fetchImg());
+
   const { MediaCard } = props;
 
   const [hideLikes, setHideLikes] = useState(false);
