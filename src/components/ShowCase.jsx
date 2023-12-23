@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Container, Grid, Box, Switch, FormControlLabel } from "@mui/material"
 
@@ -17,7 +17,9 @@ const ShowCase = (props) => {
   const ids = useSelector((state) => state.cards.ids);
   const entities = useSelector((state) => state.cards.entities);
 
-  dispatch(fetchImg());
+  useEffect(() => {
+    dispatch(fetchImg());
+  })
 
   return (
     <Container maxWidth="xl">
